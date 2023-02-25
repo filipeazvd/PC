@@ -2,9 +2,13 @@
 //java variaveis comecam a 0
 //nao colocar extend Thread. Objeto passivo usado por thread.
 class Counter{
-	private int value=0;
-	void increment(){value+=1;}
-	int value(){return value;}
+	
+	int value=0;
+
+
+	//private int value=0;
+	//void increment(){value+=1;}
+	//int value(){return value;}
 }
 //representa uma thread. Objeto que usa o counter
 class Incrementer extends Thread{
@@ -14,8 +18,8 @@ class Incrementer extends Thread{
 	Incrementer(int I, Counter c){this.I = I; this.c = c;}
 	public void run(){
 		for (int i = 1;i <= I ;++i ) {
-			//c.value+=1;
-			c.increment();
+			c.value+=1;
+			//c.increment();
 		}
 	}
 }
@@ -33,7 +37,8 @@ class Main{
 		//t.join();		
 		// ciclo que espera que cada thread acabe
 		for (int i = 0;i<N ; ++i ) a[i].join();
-		System.out.println(c.value());
+		System.out.println(c.value);
+		//System.out.println(c.value());
 	}
 }
 

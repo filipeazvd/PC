@@ -83,25 +83,14 @@ class Main{
 */
 //class para threads
 class Printer extends Thread{
-
-
 	final int I;
 	final int N;
-
 	//construtor
-	Printer(int I, int n){this.I = I; this.n = n;}
-
+	Printer(int I, int n){this.I = I; this.N = n;}
 	public void run(){
 		for (int i = 0;i <= I ;i++ ) {
-			System.out.println("Thread "+ N + "escreve" + i );
-		
-
+			System.out.println("Thread "+ N + " escreve " + i );
 		}
-		
-			
-		
-
-
 	}
 
 }
@@ -112,21 +101,17 @@ class Main{
 
 		final int N = Integer.parseInt(args[0]);
 		final int I = Integer.parseInt(args[1]);
-
 		Thread[] a = new Thread[N];
-		
-
-
-
-		for (int i = 0; i<N ; ++i ) {
-			
-			
+		for (int i = 0; i<N ; ++i ) {	
 			a[i] = new Printer(I,i+1);
-			a[i].start();
+			
 			//nao pode ser dentro do ciclo pq senao n occore em concurrencia
 			//basicamente sempre que cria uma thread ele espera e nao e isso que queremos
 			//t.join();
-		
+		}
+		for (int i = 0; i<N ;++i ) {
+			a[i].start();
+
 		}
 		// ciclo que espera que cada thread acabe
 		for (int i = 0;i<N ; ++i ) {
@@ -138,3 +123,7 @@ class Main{
 }
 
 
+// cntrl shift hold para mexer a linha 
+//cntrl shift k eliminar a linha
+//cntrl shift d copiar
+//cntrl d procura a prox ocurrencia da palavra sublinhada
